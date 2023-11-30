@@ -4,8 +4,11 @@ from io import BytesIO
 from tensorflow.keras.utils import img_to_array
 from models.predict import predict
 import numpy as np
+import base64
 
 app = Flask(__name__)
+
+labels = ["cat", "dog"]
 
 @app.route('/')
 def index():
@@ -22,23 +25,26 @@ def upload_file():
         return 'Aucun fichier sélectionné !'
 
     if file:
-        # Stocker le fichier dans une variable
         image_bytes = file.read()
         
-        # Utiliser Pillow pour ouvrir l'image à partir des bytes
         img = Image.open(BytesIO(image_bytes))
 
-        # Exemple : Redimensionner l'image
         img_resized = img.resize((150, 150))
 
         img_to_arr = img_to_array(img_resized)
 
-        # prediction = predict(model, img_to_arr)    
         img_to_arr = np.expand_dims(img_to_arr, axis=0)
 
-        prediction = predict(model, img_to_arr)
+        prediction = predict(model, img_to_arr)[0][0]
 
-        return f'Fichier téléchargé et traité avec succès ! {str(prediction)}'
+        label = labels[round(prediction)]
+
+        img_base64 = base64.b64encode(image_bytes).decode("utf-8")
+
+        if prediction < 0.5:
+            prediction = 1 - prediction
+
+        return render_template("predict.html", score=str(round(prediction * 100)), label=label, image=img_base64)
 
 def run(load_model):
     global model

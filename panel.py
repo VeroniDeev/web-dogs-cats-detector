@@ -10,7 +10,6 @@ def panel():
         print("voici")
     elif first_arg == "run":
         model = load_model("cats_and_dogs_small_1.h5")
-        # model = "salut"
         app.run(model)
     else:
         print("Erreur")

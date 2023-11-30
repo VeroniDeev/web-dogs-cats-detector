@@ -1,12 +1,26 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Télécharger une image</title>
-</head>
-<body>
-    <form action="/upload" method="post" enctype="multipart/form-data">
-        <input type="file" name="file">
-        <input type="submit" value="Send">
-    </form>
-</body>
+    <head>
+        <title>Télécharger une image</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <main id="container">
+            <div id="header">
+                <img src="{{ url_for('static', filename='logo/logo.svg') }}" alt="Logo">
+            </div>
+            <form action="/upload" id="form" method="post" enctype="multipart/form-data">
+                <label for="file">
+                    <img src="{{ url_for('static', filename='upload/upload.svg') }}" alt="Upload image" id="imagePreview">
+                    <input type="file" name="file" id="file" style="display: none;">
+                </label>
+                <input type="submit" value="Predict">
+            </form>
+            <p id="error"></p>
+        </main>
+        <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+    </body>
 </html>

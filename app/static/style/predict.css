@@ -1,0 +1,86 @@
+*{
+    margin: 0;
+    padding: 0;
+    color: #FFFFFF;
+    font-family: 'Kaushan Script', cursive;
+}
+
+html{
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background-color: #145F4F;
+    width: 100%;
+    height: 100%;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+#showScore {
+    width: 100%;
+    height: 100%;
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-evenly;*/
+    align-items: center; 
+}
+
+#showScore img{
+    width: 340px;
+    height: 340px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 15px;
+}
+
+#showScore a {
+    margin-top: 30px;
+    text-decoration: none;
+    background-color: #00BC29;
+    border-radius: 20px;
+    width: 10%;
+    height: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+}
+
+#showScore .label {
+    font-size: 32px;
+}
+
+#showScore .result {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#showScore .result p {
+    font-size: 24px;
+}
+
+#showScore .result .progressbar {
+    position: relative;
+    width: 1000%;
+    height: 10px;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+}
+
+#showScore .result .progressbar .second-progressbar{
+    position: absolute;
+    height: 10px;
+    background-color: #00A54C;
+    border-radius: 20px;
+}
